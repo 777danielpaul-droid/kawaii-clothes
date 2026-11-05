@@ -1,0 +1,8 @@
+/* Wolken-Header: Himmel + 6 Wolkenschichten (Canvas-Kacheln, endlos), Parallax per JS (nur transform). Ebenen mit .edge sind in den oberen Ecken dichter */
+.sky { position: absolute; left: 0; right: 0; top: 0; z-index: -1; height: clamp(170px, 24vw, 320px); pointer-events: none; overflow-x: clip; transition: opacity .5s; }
+html.menu-open .sky { opacity: 0; }
+.sky-bg { position: absolute; inset: 0; background: linear-gradient(color-mix(in srgb, var(--accent) 6%, var(--sky-a)), color-mix(in srgb, var(--sky-b) 60%, transparent) 55%, transparent); }
+.cl-wrap { position: absolute; left: 0; right: 0; top: 0; height: var(--h); opacity: var(--o); overflow: hidden; animation: bob var(--bob) ease-in-out infinite; }
+.cl-wrap.edge { -webkit-mask-image: linear-gradient(90deg, #000 0, #000 14%, transparent 40%, transparent 60%, #000 86%, #000 100%); mask-image: linear-gradient(90deg, #000 0, #000 14%, transparent 40%, transparent 60%, #000 86%, #000 100%); }
+.cl { position: absolute; left: -120px; top: -24px; height: calc(100% + 24px); will-change: transform; background-repeat: repeat-x; background-size: auto 100%; }
+@keyframes bob { 50% { translate: 0 5px; } }

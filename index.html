@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de" class="js" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>kawaii clothes</title>
+  <meta name="description" content="kawaii clothes – Shirts mit Augen.">
+  <meta name="theme-color" content="#0a0d0f">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="star" viewBox="0 0 100 100"><path d="M50 0C54 30 70 46 100 50C70 54 54 70 50 100C46 70 30 54 0 50C30 46 46 30 50 0Z"/></symbol>
+    <symbol id="logo" viewBox="0 0 830 112"><g id="logo-g" fill="none" stroke="currentColor" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"></g></symbol>
+    <symbol id="shirt" viewBox="0 0 100 100">
+      <path d="M30 12 10 24l8 16 10-5v53h44V35l10 5 8-16-20-12c-4 8-36 8-40 0Z" fill="var(--shirt,#fff)" style="stroke:var(--ink)" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <div class="pre" id="pre" aria-hidden="true">
+    <svg class="pre-logo" viewBox="0 0 830 112" id="pre-logo"></svg>
+    <div class="pre-meta"><span>BOOT</span><span><b id="pre-n">0</b>%</span></div>
+    <div class="pre-bar"><i id="pre-bar"></i></div>
+  </div>
+  <div class="cur" id="cur"></div><div class="ring" id="ring"></div>
+  <canvas id="lens" aria-hidden="true"></canvas>
+
+  <canvas id="rain" aria-hidden="true"></canvas>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <canvas class="petals" id="petals" aria-hidden="true"></canvas>
+  <svg class="traces" id="traces" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+    <path pathLength="1" d="M40 0V220L70 250V520L40 550V1000"/>
+    <path pathLength="1" d="M960 0V340L930 370V700L960 730V1000"/>
+    <path pathLength="1" d="M70 250H20M930 370H980" class="stub"/>
+  </svg>
+
+  <a class="skip" href="#shop">Zum Shop springen</a>
+
+  <header class="bar">
+    <a class="mark" href="#top" aria-label="kawaii clothes, zum Seitenanfang"><svg viewBox="0 0 830 112" aria-hidden="true"><use href="#logo"/></svg></a>
+    <div class="bar-right">
+      <button class="icon-btn" id="style-btn" type="button" aria-expanded="false" aria-controls="panel" aria-label="Styling" title="Styling">◈</button>
+      <button class="icon-btn" id="theme-btn" type="button" aria-label="Dark/Light" title="Dark/Light">◐</button>
+      <a class="cart" href="#" aria-label="Warenkorb, 0 Artikel"><span class="cart-label">CART</span><span class="count">0</span></a>
+    </div>
+  </header>
+
+  <aside class="panel" id="panel" aria-label="Styling" inert>
+    <header><span>// STYLING</span><button id="panel-x" type="button" aria-label="Schließen">×</button></header>
+    <label class="row"><span>Highlight</span><input type="color" id="accent-in" value="#8bd16b"></label>
+    <div class="swatches" id="swatches"></div>
+    <label class="row"><span>Auge mitfärben</span><input type="checkbox" id="tint-in"></label>
+    <label class="row"><span>Flackern</span><input type="range" id="flick-in" min="0" max="100" value="60"></label>
+    <button class="reset" id="reset" type="button">Reset</button>
+  </aside>
+
+  <main id="top">
+    <!-- Japanische Wörter im Hintergrund der Kollektion: fliegen beim Scrollen nach oben -->
+    <div class="jp-words jp-words-shop" id="jp-words-shop" aria-hidden="true"></div>
+    <section class="hero" aria-labelledby="brand">
+      <div class="hero-stick">
+      <div class="jp-words" id="jp-words" aria-hidden="true"></div>
+      <div class="hero-text">
+        <h1 class="brand" id="brand" lang="ja">カワイイ クローズ</h1>
+        <p class="lead">kawaii clothes</p>
+        <a class="btn" href="#shop"><span>Zum Shop</span><i aria-hidden="true">→</i></a>
+      </div>
+      <div class="scroll-hint" aria-hidden="true"><span>SCROLL</span><i></i></div>
+      </div>
+    </section>
+
+    <section class="sheet" id="shop" aria-labelledby="shop-title">
+      <div class="sec-no" data-scroll data-scroll-speed="-0.12" aria-hidden="true">01</div>
+      <div class="sheet-head">
+        <p class="eyebrow">/ KOLLEKTION</p>
+        <h2 id="shop-title" data-split>Neu im Shop</h2>
+      </div>
+      <ul class="grid" id="grid"></ul>
+    </section>
+
+    <section class="look" id="look" data-scroll data-scroll-css-progress aria-label="Lookbook">
+      <div class="look-stick">
+        <p class="eyebrow look-eyebrow">/ LOOKBOOK</p>
+        <div class="look-track" id="look-track"></div>
+        <div class="look-bar" aria-hidden="true"><i></i></div>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="sec-no" data-scroll data-scroll-speed="0.1" aria-hidden="true">02</div>
+      <div class="about-text" data-scroll data-scroll-speed="0.08">
+        <h2 id="about-title" data-split>Alle Shirts streng limitiert.</h2>
+      </div>
+    </section>
+
+    <footer class="foot" id="contact">
+      <!-- Japanischer Schriftzug: leuchtet beim Runterscrollen kurz vorm Feuerwerk auf (ohne Pin, nur Scroll-Position) -->
+      <div class="jp-flash" id="jp-flash" aria-hidden="true"><span class="jp-flash-text" lang="ja">カワイイ クローズ</span></div>
+      <p class="goodnight" data-split>Bis bald.</p>
+      <div class="foot-row">
+        <nav class="foot-links" aria-label="Rechtliches und Kontakt">
+          <a href="#kontakt" data-legal="kontakt">Kontakt</a><a href="#versand" data-legal="versand">Versand &amp; Rückgabe</a><a href="#impressum" data-legal="impressum">Impressum</a><a href="#datenschutz" data-legal="datenschutz">Datenschutz</a>
+        </nav>
+        <div class="fx-wrap">
+          <button class="fx-btn" id="fx-btn" type="button" aria-label="Feuerwerk zünden"><span aria-hidden="true">✦</span> Feuerwerk</button>
+          <canvas class="hase" id="hase" aria-hidden="true"></canvas>
+        </div>
+        <button class="snd-btn" id="snd-btn" type="button" aria-label="Ton des Feuerwerks ein- oder ausschalten">♪ Ton an</button>
+      </div>
+      <p class="copy">© 2026 kawaii clothes</p>
+    </footer>
+  </main>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "kawaii-clothes",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:all": "node scripts/dev.mjs",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "setup": "node scripts/setup.mjs",
+    "server": "node scripts/setup.mjs && node server/index.js",
+    "start": "node scripts/setup.mjs && npm run build && node server/index.js"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "vite": "^8.3.2"
+  },
+  "dependencies": {
+    "@fontsource/edu-qld-beginner": "^5.3.0",
+    "@fontsource/m-plus-rounded-1c": "^5.3.0",
+    "locomotive-scroll": "^5.0.1",
+    "express": "^4.21.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
