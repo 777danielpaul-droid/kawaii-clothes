@@ -33,7 +33,7 @@ const TEXTS = [
   { key: 'bye',     label: 'Schlusswort',         sel: '.goodnight' },
   { key: 'copy',    label: 'Copyright',           sel: '.copy' },
 ];
-const DEFAULT_ACCENT = '#8bd16b';
+const DEFAULT_ACCENT = '#8f6bd1';
 const HERO_MAX_W = 1920;       // Hero-Frames werden auf diese Breite begrenzt
 const HERO_QUALITY = 0.85;
 

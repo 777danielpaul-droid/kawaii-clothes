@@ -277,7 +277,7 @@ document.addEventListener('click', e => {
 
 /* ---- Theme (Dark/Light), Highlight-Farbe, Styling-Panel ---- */
 interface Style { theme: 'light' | 'dark'; themeV: number; accent: string; own: boolean; tint: boolean; ownTint: boolean; flick: number }   // own/ownTint: Besucher hat selbst gewählt, sonst gilt der CMS-Standard
-const DEF: Style = { theme: 'dark', themeV: 2, accent: '#8bd16b', own: false, tint: false, ownTint: false, flick: 60 };
+const DEF: Style = { theme: 'dark', themeV: 2, accent: '#8f6bd1', own: false, tint: false, ownTint: false, flick: 60 };
 let siteAccent = DEF.accent;                 // Highlight-Standard aus dem CMS
 let siteTint = DEF.tint;                     // „Auge mitfärben“ als Standard aus dem CMS
 const KEY = 'kc-style';
@@ -311,7 +311,7 @@ function applyStyle() {
   root.style.setProperty('--bg-tint', `hue-rotate(${tint ? Math.round(hueOf(acc) - 100) : 0}deg)`);
   root.style.setProperty('--flick', String(st.flick / 100));
   accentIn.value = acc; tintIn.checked = tint; flickIn.value = String(st.flick);
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', st.theme === 'dark' ? '#0a0d0f' : '#F9F9FA');
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', st.theme === 'dark' ? '#1b1320' : '#F9F9FA');
   try { localStorage.setItem(KEY, JSON.stringify(st)); } catch { /* ignorieren */ }
 }
 $('theme-btn').addEventListener('click', () => { st.theme = st.theme === 'dark' ? 'light' : 'dark'; applyStyle(); });
@@ -319,7 +319,7 @@ accentIn.addEventListener('input', () => { st.accent = accentIn.value; st.own = 
 tintIn.addEventListener('change', () => { st.tint = tintIn.checked; st.ownTint = true; applyStyle(); });
 flickIn.addEventListener('input', () => { st.flick = +flickIn.value; applyStyle(); });
 $('reset').addEventListener('click', () => { st = { ...DEF, theme: st.theme }; applyStyle(); });
-$('swatches').innerHTML = ['#8bd16b', '#7c5cff', '#00d4c8', '#ff5fa2', '#ffb020'].map(c => `<button type="button" style="--c:${c}" data-c="${c}" aria-label="Farbe ${c}"></button>`).join('');
+$('swatches').innerHTML = ['#8f6bd1', '#7c5cff', '#00d4c8', '#ff5fa2', '#ffb020'].map(c => `<button type="button" style="--c:${c}" data-c="${c}" aria-label="Farbe ${c}"></button>`).join('');
 $('swatches').addEventListener('click', e => { const c = (e.target as HTMLElement).dataset.c; if (c) { st.accent = c; st.own = true; applyStyle(); } });
 const panel = $('panel'), styleBtn = $('style-btn');
 function setPanel(open: boolean) { panel.classList.toggle('open', open); panel.toggleAttribute('inert', !open); styleBtn.setAttribute('aria-expanded', String(open)); }
@@ -536,7 +536,7 @@ cartStyle.textContent = `
   width: 100%;
   min-height: 48px;
   padding: 0 1rem;
-  background: var(--accent, #8bd16b);
+  background: var(--accent, #8f6bd1);
   color: var(--on-accent, #14181A);
   border: none;
   font: 700 .8rem var(--mono); text-transform: uppercase; letter-spacing: .08em;
