@@ -10,15 +10,16 @@ const file = path.join(path.resolve(path.dirname(fileURLToPath(import.meta.url))
 let text = '';
 try { text = fs.readFileSync(file, 'utf8'); } catch { /* .env gibt es noch nicht */ }
 
-if (/^\s*ADMIN_PASSWORD\s*=\s*\S+/m.test(text)) process.exit(0);   // schon eingerichtet
+// schon eingerichtet: nichts tun (kein process.exit, sonst würde auch dev.mjs beendet, das dieses Modul importiert)
+if (!/^\s*ADMIN_PASSWORD\s*=\s*\S+/m.test(text)) {
+  const password = crypto.randomBytes(18).toString('base64url');       // 24 Zeichen
+  const line = `ADMIN_PASSWORD=${password}`;
+  text = /^\s*ADMIN_PASSWORD\s*=\s*$/m.test(text)
+    ? text.replace(/^\s*ADMIN_PASSWORD\s*=\s*$/m, line)
+    : `${text}${text && !text.endsWith('\n') ? '\n' : ''}${line}\n`;
+  fs.writeFileSync(file, text, { mode: 0o600 });
 
-const password = crypto.randomBytes(18).toString('base64url');       // 24 Zeichen
-const line = `ADMIN_PASSWORD=${password}`;
-text = /^\s*ADMIN_PASSWORD\s*=\s*$/m.test(text)
-  ? text.replace(/^\s*ADMIN_PASSWORD\s*=\s*$/m, line)
-  : `${text}${text && !text.endsWith('\n') ? '\n' : ''}${line}\n`;
-fs.writeFileSync(file, text, { mode: 0o600 });
-
-console.log('\n  CMS-Passwort wurde erzeugt und in .env gespeichert:\n');
-console.log(`    ${password}\n`);
-console.log('  Anmelden: Seite mit ?cms öffnen (z. B. http://localhost:5173/?cms), auf ✎ klicken.\n');
+  console.log('\n  CMS-Passwort wurde erzeugt und in .env gespeichert:\n');
+  console.log(`    ${password}\n`);
+  console.log('  Anmelden: Seite mit ?cms öffnen (z. B. http://localhost:5173/?cms), auf ✎ klicken.\n');
+}

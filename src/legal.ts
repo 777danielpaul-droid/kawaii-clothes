@@ -30,6 +30,12 @@ export const LEGAL_DEFAULTS: LegalData = {
   name: 'Daniel Paul',
   street: 'Imhoffstücken 18',
   zipCity: '21423 Winsen',
+  email: '777danielpaul@gmail.com',
+  hosting: 'Render (Render Services, Inc., San Francisco, USA)',
+  shipCountries: 'Deutschland',
+  deliveryTime: '5–10 Werktage',
+  shippingCosts: 'Je nach Produkt und Lieferadresse; werden im Checkout angezeigt.',
+  vatNote: 'Gemäß § 19 UStG wird keine Umsatzsteuer berechnet und ausgewiesen.',
   phone: '0151 67575229',
   authority: 'Der Landesbeauftragte für den Datenschutz Niedersachsen, Prinzenstraße 5, 30159 Hannover',   // zuständig für Niedersachsen (Winsen/Luhe)
 };
@@ -105,7 +111,7 @@ function datenschutz(d: LegalData) {
 <p>Die Zahlung wickeln Zahlungsdienstleister ab, die Ihnen im Checkout angezeigt werden: ${v('payment')}. Ihre Zahlungsdaten geben Sie direkt dort ein, wir erhalten sie nicht. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO. Es gelten ergänzend die Datenschutzbestimmungen des jeweiligen Zahlungsdienstleisters.</p>
 
 <h3>7. Versand und Produktion</h3>
-<p>Zur Lieferung geben wir Ihren Namen, Ihre Lieferanschrift und, falls für die Zustellung nötig, Ihre E-Mail-Adresse oder Telefonnummer an das von uns beauftragte Versandunternehmen weiter. Soweit wir Produktion und Versand über Dienstleister (z. B. Druck- und Fulfillment-Partner) abwickeln, erhalten diese die für die Ausführung Ihrer Bestellung erforderlichen Daten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.</p>
+<p>Zur Lieferung geben wir Ihren Namen, Ihre Lieferanschrift und, falls für die Zustellung nötig, Ihre E-Mail-Adresse oder Telefonnummer an das von uns beauftragte Versandunternehmen weiter. Unsere Shirts werden erst nach Ihrer Bestellung gedruckt (Print-on-Demand) und versendet. Produktion und Versand übernimmt für uns die Plattform Printify (Printify, Inc.) zusammen mit ihren angeschlossenen Druckpartnern. Dafür übermitteln wir Printify bzw. dem jeweiligen Druckpartner Ihren Namen, Ihre Lieferanschrift, die bestellten Artikel und, soweit für die Zustellung nötig, Ihre E-Mail-Adresse und Telefonnummer. Die Druckpartner können auch außerhalb der EU sitzen; die Übermittlung stützt sich auf Angemessenheitsbeschlüsse der EU-Kommission bzw. auf Standardvertragsklauseln. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO. Weitere Informationen finden Sie in der Datenschutzerklärung von Printify.</p>
 
 <h3>8. Kontaktaufnahme</h3>
 <p>Wenn Sie uns per E-Mail oder Telefon kontaktieren, verarbeiten wir Ihre Angaben (z. B. Name, Kontaktdaten, Inhalt der Anfrage), um Ihr Anliegen zu bearbeiten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO, soweit es um einen Vertrag oder vorvertragliche Maßnahmen geht, sonst Art. 6 Abs. 1 lit. f DSGVO. Wir löschen die Daten, sobald Ihre Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.</p>
@@ -139,6 +145,9 @@ function versand(d: LegalData) {
 <strong>Lieferzeit:</strong> ${v('deliveryTime')}<br>
 <strong>Versandkosten:</strong> ${v('shippingCosts')}</p>
 <p>Die Lieferzeit beginnt, sobald Ihre Zahlung bei uns eingegangen ist bzw. bei Zahlungsarten ohne Vorauszahlung mit der Bestellung. Alle Artikel sind streng limitiert; ist ein Artikel nicht mehr verfügbar, informieren wir Sie unverzüglich und erstatten bereits geleistete Zahlungen.</p>
+
+<h3>Produktion und Versand über Printify</h3>
+<p>Alle Artikel werden erst nach Ihrer Bestellung für Sie gedruckt (Print-on-Demand). Produktion und Versand erfolgen über unseren Fulfillment-Partner Printify und dessen Druckpartner. Die Lieferzeit setzt sich aus Produktionszeit und Versandzeit zusammen. Bestellen Sie mehrere Artikel, können diese aus technischen Gründen in getrennten Sendungen und zu unterschiedlichen Zeiten bei Ihnen eintreffen. Sie erhalten eine Versandbestätigung per E-Mail, sobald Ihre Bestellung unterwegs ist. Bei Fragen zum Versand erreichen Sie uns unter ${mail}.</p>
 
 <h3>Preise und Zahlung</h3>
 <p>Alle Preise sind Endpreise in Euro. ${v('vatNote')} Die verfügbaren Zahlungsarten werden Ihnen im Checkout angezeigt. Bis zur vollständigen Bezahlung bleibt die Ware unser Eigentum.</p>

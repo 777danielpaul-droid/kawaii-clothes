@@ -275,6 +275,10 @@ app.get('/api/hero/:v/:i.jpg', (req, res) => {
 
 app.use('/api', (_req, res) => res.status(404).json({ error: 'Nicht gefunden' }));
 
+app.get('/api/_debug/headers', (req, res) => {
+  res.json({ host: req.headers.host, origin: req.headers.origin, forwarded: req.headers['x-forwarded-host'], method: req.method });
+});
+
 /* Produktivbetrieb: die gebaute Seite mitliefern */
 if (fs.existsSync(DIST)) app.use(express.static(DIST));
 
